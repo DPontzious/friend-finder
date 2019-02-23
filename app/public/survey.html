@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Friend Finder</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Survey Questions</h2>
+        <h3>About You</h3>
+        <form>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Your Name(Required)</label>
+                <input type="email" class="form-control" id="name">
+            </div>
+            <div class="form-group">
+                <label for="photo">Photo(Required)</label>
+                <input type="photo" class="form-control" id="photo">
+            </div>
+
+        </form>
+        <div class="form-group">
+            <h3>Questions 1:</h3>
+            <label for="exampleFormControlSelect1"><b>Kittens are the best!</b></label>
+            <select class="form-control" id="exampleFormControlSelect1">
+                <option>1(Strongly Disagree)</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5(Strongly Agree)</option>
+            </select>
+        </div>
+        <br>
+        <div class="form-group">
+            <h3>Questions 2:</h3>
+            <label for="exampleFormControlSelect1"><b>Coding is fun! </b></label>
+            <select class="form-control" id="exampleFormControlSelect1">
+                <option>1(Strongly Disagree)</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5(Strongly Agree)</option>
+            </select>
+        </div>
+        <br>
+        <div class="form-group">
+            <h3>Questions 3:</h3>
+            <label for="exampleFormControlSelect1"><b>I choose the cold rain day over an extra hot day. </b></label>
+            <select class="form-control" id="exampleFormControlSelect1">
+                <option>1(Strongly Disagree)</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5(Strongly Agree)</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <h3>Questions 4:</h3>
+            <label for="exampleFormControlSelect1"><b>I am a big picture kind of person.</b></label>
+            <select class="form-control" id="exampleFormControlSelect1">
+                <option>1(Strongly Disagree)</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5(Strongly Agree)</option>
+            </select>
+        </div>
+        <br>
+        <div class="form-group">
+            <h3>Questions 5:</h3>
+            <label for="exampleFormControlSelect1"><b>I choose a day at the beach over hiking to a beautiful canyon </b></label>
+            <select class="form-control" id="exampleFormControlSelect1">
+                <option>1(Strongly Disagree)</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5(Strongly Agree)</option>
+            </select>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <br>
+
+        <div class="modal" id="results" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">You Matched With:</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="match">
+                        <div class="class" id="img"></div>
+                        <p></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            $("#sumbit").on("click", function (event) {
+                event.preventDefault();
+                var userData = {
+                    name: ("#name").val(),
+                    photo: ("#photo").val(),
+                    scores: [
+                        $("#q1").val(),
+                        $("#q2").val(),
+                        $("#q3").val(),
+                        $("#q4").val(),
+                        $("#q5").val(),
+                    ]
+                };
+                $.post("/api/friends", userData, function (data) {
+                    $("#match").text(data.name);
+                    $("#img").attr("src", data.photo);
+                    $("#results").modal("toggle");
+
+                })
+            })
+        </script>
+    </div>
+</body>
+
+</html>

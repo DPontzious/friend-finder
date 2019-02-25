@@ -16,8 +16,8 @@
         <h3>About You</h3>
         <form>
             <div class="form-group">
-                <label for="exampleInputEmail1">Your Name(Required)</label>
-                <input type="email" class="form-control" id="name">
+                <label for="name">Your Name(Required)</label>
+                <input type="name" class="form-control" id="name">
             </div>
             <div class="form-group">
                 <label for="photo">Photo(Required)</label>
@@ -27,8 +27,8 @@
         </form>
         <div class="form-group">
             <h3>Questions 1:</h3>
-            <label for="exampleFormControlSelect1"><b>Kittens are the best!</b></label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <label for="q1"><b>Kittens are the best!</b></label>
+            <select class="form-control" id="q1">
                 <option>1(Strongly Disagree)</option>
                 <option>2</option>
                 <option>3</option>
@@ -39,8 +39,8 @@
         <br>
         <div class="form-group">
             <h3>Questions 2:</h3>
-            <label for="exampleFormControlSelect1"><b>Coding is fun! </b></label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <label for="q2"><b>Coding is fun! </b></label>
+            <select class="form-control" id="q2">
                 <option>1(Strongly Disagree)</option>
                 <option>2</option>
                 <option>3</option>
@@ -51,8 +51,8 @@
         <br>
         <div class="form-group">
             <h3>Questions 3:</h3>
-            <label for="exampleFormControlSelect1"><b>I choose the cold rain day over an extra hot day. </b></label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <label for="q3"><b>I choose the cold rain day over an extra hot day. </b></label>
+            <select class="form-control" id="q3">
                 <option>1(Strongly Disagree)</option>
                 <option>2</option>
                 <option>3</option>
@@ -62,8 +62,8 @@
         </div>
         <div class="form-group">
             <h3>Questions 4:</h3>
-            <label for="exampleFormControlSelect1"><b>I am a big picture kind of person.</b></label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <label for="q4"><b>I am a big picture kind of person.</b></label>
+            <select class="form-control" id="q4">
                 <option>1(Strongly Disagree)</option>
                 <option>2</option>
                 <option>3</option>
@@ -74,8 +74,8 @@
         <br>
         <div class="form-group">
             <h3>Questions 5:</h3>
-            <label for="exampleFormControlSelect1"><b>I choose a day at the beach over hiking to a beautiful canyon </b></label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <label for="q5"><b>I choose a day at the beach over hiking to a beautiful canyon </b></label>
+            <select class="form-control" id="q5">
                 <option>1(Strongly Disagree)</option>
                 <option>2</option>
                 <option>3</option>
@@ -84,7 +84,7 @@
             </select>
         </div>
         <br>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary submit">Submit</button>
         <br>
 
         <div class="modal" id="results" tabindex="-1" role="dialog">
@@ -101,27 +101,28 @@
                         <p></p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="second button" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
         </div>
 
         <script type="text/javascript">
-            $("#sumbit").on("click", function (event) {
+            $(".sumbit").on("click", function (event) {
                 event.preventDefault();
                 var userData = {
-                    name: ("#name").val(),
+                    name: ("#name").val().trim(),
                     photo: ("#photo").val(),
                     scores: [
-                        $("#q1").val(),
-                        $("#q2").val(),
-                        $("#q3").val(),
-                        $("#q4").val(),
-                        $("#q5").val(),
+                        $("#q1").val().trim(),
+                        $("#q2").val().trim(),
+                        $("#q3").val().trim(),
+                        $("#q4").val().trim(),
+                        $("#q5").val().trim(),
                     ]
                 };
                 $.post("/api/friends", userData, function (data) {
+
                     $("#match").text(data.name);
                     $("#img").attr("src", data.photo);
                     $("#results").modal("toggle");

@@ -85,6 +85,67 @@
             </select>
         </div>
         <br>
+        <div class="form-group">
+            <h3>Questions 6:</h3>
+            <label for="q6"><b>Black is a great color!</b></label>
+            <select class="form-control" id="q5">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <br>
+        <div class="form-group">
+            <h3>Questions 7:</h3>
+            <label for="q7"><b>I am a shy person.</b></label>
+            <select class="form-control" id="q5">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <br>
+        <div class="form-group">
+            <h3>Questions 8:</h3>
+            <label for="q8"><b>I am a morning person</b></label>
+            <select class="form-control" id="q5">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <br>
+        <div class="form-group">
+            <h3>Questions 9:</h3>
+            <label for="q9"><b>I like to cook.</b></label>
+            <select class="form-control" id="q5">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <br>
+        <div class="form-group">
+            <h3>Questions 10:</h3>
+            <label for="q10"><b>Breaksat is the most important meal of the day.</b></label>
+            <select class="form-control" id="q5">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <br>
+
         <button type="submit" class="btn btn-primary submit" id="button">Submit</button>
         <br>
 
@@ -120,6 +181,11 @@
                         $("#q3").val().trim(),
                         $("#q4").val().trim(),
                         $("#q5").val().trim(),
+                        $("#q6").val().trim(),
+                        $("#q7").val().trim(),
+                        $("#q8").val().trim(),
+                        $("#q9").val().trim(),
+                        $("#q10").val().trim()
                     ]
                 };
                 $.post("/api/friends", match, function (data) {

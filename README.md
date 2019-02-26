@@ -1,1 +1,2 @@
 # friend-finder
+This isnt functioning properly. I misread the directions and instead of comparing the answers and getting the difference I added up the total of the answers, example if they answered 1 for all questions then the total would be 10. Then I compared the totals. Once I realized I didnt do it as directed I attempted to start again and ran into lots of problems. I need to finish working on getting the best Match then display it to my modal. 

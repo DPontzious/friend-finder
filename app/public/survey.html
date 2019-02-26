@@ -8,6 +8,7 @@
     <title>Friend Finder</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
         crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery.js"></script>
 </head>
 
 <body>
@@ -23,17 +24,17 @@
                 <label for="photo">Photo(Required)</label>
                 <input type="photo" class="form-control" id="photo">
             </div>
-
+            <h4> Answer the following questions. 5 is strongly agree and 1 is strongly disagree</h4>
         </form>
         <div class="form-group">
             <h3>Questions 1:</h3>
             <label for="q1"><b>Kittens are the best!</b></label>
             <select class="form-control" id="q1">
-                <option>1(Strongly Disagree)</option>
+                <option>1</option>
                 <option>2</option>
                 <option>3</option>
                 <option>4</option>
-                <option>5(Strongly Agree)</option>
+                <option>5</option>
             </select>
         </div>
         <br>
@@ -41,11 +42,11 @@
             <h3>Questions 2:</h3>
             <label for="q2"><b>Coding is fun! </b></label>
             <select class="form-control" id="q2">
-                <option>1(Strongly Disagree)</option>
+                <option>1</option>
                 <option>2</option>
                 <option>3</option>
                 <option>4</option>
-                <option>5(Strongly Agree)</option>
+                <option>5</option>
             </select>
         </div>
         <br>
@@ -53,22 +54,22 @@
             <h3>Questions 3:</h3>
             <label for="q3"><b>I choose the cold rain day over an extra hot day. </b></label>
             <select class="form-control" id="q3">
-                <option>1(Strongly Disagree)</option>
+                <option>1</option>
                 <option>2</option>
                 <option>3</option>
                 <option>4</option>
-                <option>5(Strongly Agree)</option>
+                <option>5</option>
             </select>
         </div>
         <div class="form-group">
             <h3>Questions 4:</h3>
             <label for="q4"><b>I am a big picture kind of person.</b></label>
             <select class="form-control" id="q4">
-                <option>1(Strongly Disagree)</option>
+                <option>1</option>
                 <option>2</option>
                 <option>3</option>
                 <option>4</option>
-                <option>5(Strongly Agree)</option>
+                <option>5</option>
             </select>
         </div>
         <br>
@@ -76,15 +77,15 @@
             <h3>Questions 5:</h3>
             <label for="q5"><b>I choose a day at the beach over hiking to a beautiful canyon </b></label>
             <select class="form-control" id="q5">
-                <option>1(Strongly Disagree)</option>
+                <option>1</option>
                 <option>2</option>
                 <option>3</option>
                 <option>4</option>
-                <option>5(Strongly Agree)</option>
+                <option>5</option>
             </select>
         </div>
         <br>
-        <button type="submit" class="btn btn-primary submit">Submit</button>
+        <button type="submit" class="btn btn-primary submit" id="button">Submit</button>
         <br>
 
         <div class="modal" id="results" tabindex="-1" role="dialog">
@@ -108,11 +109,11 @@
         </div>
 
         <script type="text/javascript">
-            $(".sumbit").on("click", function (event) {
+            $("#button").on("click", function (event) {
                 event.preventDefault();
-                var userData = {
-                    name: ("#name").val().trim(),
-                    photo: ("#photo").val(),
+                var newFriend = {
+                    name: $("#name").val().trim(),
+                    photo: $("#photo").val(),
                     scores: [
                         $("#q1").val().trim(),
                         $("#q2").val().trim(),
@@ -121,13 +122,16 @@
                         $("#q5").val().trim(),
                     ]
                 };
-                $.post("/api/friends", userData, function (data) {
+                $.post("/api/friends", match, function (data) {
 
                     $("#match").text(data.name);
                     $("#img").attr("src", data.photo);
-                    $("#results").modal("toggle");
-
+                    $(".img1").css('height', '100px');
+                    $(".img1").css('width', '100px');
+                    // $("#results").modal("toggle");
+                    console.log(data.name)
                 })
+
             })
         </script>
     </div>

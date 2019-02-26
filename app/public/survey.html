@@ -88,7 +88,7 @@
         <div class="form-group">
             <h3>Questions 6:</h3>
             <label for="q6"><b>Black is a great color!</b></label>
-            <select class="form-control" id="q5">
+            <select class="form-control" id="q6">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -100,7 +100,7 @@
         <div class="form-group">
             <h3>Questions 7:</h3>
             <label for="q7"><b>I am a shy person.</b></label>
-            <select class="form-control" id="q5">
+            <select class="form-control" id="q7">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -112,7 +112,7 @@
         <div class="form-group">
             <h3>Questions 8:</h3>
             <label for="q8"><b>I am a morning person</b></label>
-            <select class="form-control" id="q5">
+            <select class="form-control" id="q8">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -124,7 +124,7 @@
         <div class="form-group">
             <h3>Questions 9:</h3>
             <label for="q9"><b>I like to cook.</b></label>
-            <select class="form-control" id="q5">
+            <select class="form-control" id="q9">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -136,7 +136,7 @@
         <div class="form-group">
             <h3>Questions 10:</h3>
             <label for="q10"><b>Breaksat is the most important meal of the day.</b></label>
-            <select class="form-control" id="q5">
+            <select class="form-control" id="q10">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -190,12 +190,12 @@
                 };
                 $.post("/api/friends", match, function (data) {
 
-                    $("#match").text(data.name);
+                    $("#results").text(data.name);
                     $("#img").attr("src", data.photo);
                     $(".img1").css('height', '100px');
                     $(".img1").css('width', '100px');
-                    // $("#results").modal("toggle");
-                    console.log(data.name)
+                    $("#results").modal;
+
                 })
 
             })
